@@ -75,10 +75,10 @@ const LandingPage = () => {
         duration: 0.5
       }} className="flex-1 flex flex-col justify-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-            Manage Your Workforce <span className="text-company-accent text-glow">Seamlessly</span>
+          Welcome to the  <span className="text-company-accent text-glow">Attendance Analysis System</span>
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Track attendance, manage payroll, and streamline your employee management with our powerful 24/7 platform.
+            Track attendance and streamline your employee management with our powerful 24/7 platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-8 py-6 text-lg">
@@ -142,7 +142,7 @@ const LandingPage = () => {
           }} transition={{
             duration: 0.5
           }} className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Powerful Features for Your Business
+              Powerful Features
             </motion.h2>
             <motion.p initial={{
             opacity: 0,
@@ -283,12 +283,12 @@ const features = [{
   description: "Track employee attendance with ease, manage time-offs, and generate reports.",
   icon: <Calendar className="h-6 w-6 text-company-accent" />
 }, {
-  title: "Payroll Processing",
-  description: "Automate salary calculations, manage payslips, and ensure timely payments.",
+  title: "Upload Your Excel Sheet Instantly",
+  description: "Easily import your attendance data in Excel format and view it neatly organized in a responsive table. No manual entry needed.",
   icon: <BarChart3 className="h-6 w-6 text-company-accent" />
 }, {
-  title: "Employee Management",
-  description: "Maintain employee records, track performance, and streamline onboarding.",
+  title: "Track Attendance Effortlessly",
+  description: "Monitor attendance records in real time with smart tracking tools. Get clear insights into presence, absences, and trends—all in one place.",
   icon: <Users className="h-6 w-6 text-company-accent" />
 }, {
   title: "Secure Access",
