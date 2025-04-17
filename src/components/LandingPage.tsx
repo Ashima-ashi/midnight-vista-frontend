@@ -11,9 +11,7 @@ const LandingPage = () => {
       <header className="w-full px-6 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="h-10 w-10 rounded-full bg-company-accent flex items-center justify-center">
-              <Clock className="h-6 w-6 text-white" />
-            </div>
+            
             <span className="text-xl font-bold">24/7 Company</span>
           </div>
           
