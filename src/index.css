@@ -5,6 +5,40 @@
 
 @layer base {
   :root {
+    /* Default light theme variables */
+    --background: 218 49% 98%; /* light blue-gray */
+    --foreground: 216 50% 15%; /* dark blue */
+
+    --card: 220 30% 96%;
+    --card-foreground: 216 50% 15%;
+
+    --popover: 220 30% 96%;
+    --popover-foreground: 216 50% 15%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 25% 80%;
+    --secondary-foreground: 216 50% 15%;
+
+    --muted: 223 47% 94%;
+    --muted-foreground: 215 25% 35%;
+
+    --accent: 194 96% 42%;
+    --accent-foreground: 216 50% 15%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 34% 83%;
+    --input: 216 34% 83%;
+    --ring: 224 76% 52%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme variables */
     --background: 216 50% 5%;
     --foreground: 213 31% 91%;
 
@@ -43,12 +77,20 @@
   }
 
   body {
-    @apply bg-company-blue-dark text-foreground antialiased;
+    @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
   html {
     @apply scroll-smooth;
+  }
+  
+  .dark body {
+    @apply bg-company-blue-dark;
+  }
+  
+  .light body {
+    @apply bg-gray-50;
   }
 }
 
@@ -66,7 +108,15 @@
   }
   
   .glass-card {
-    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-lg;
+    @apply backdrop-blur-md border shadow-lg;
+  }
+  
+  .dark .glass-card {
+    @apply bg-white/5 border-white/10;
+  }
+  
+  .light .glass-card {
+    @apply bg-white/80 border-gray-200;
   }
   
   .link-hover {

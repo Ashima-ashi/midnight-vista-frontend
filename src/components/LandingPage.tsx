@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Users, BarChart3, Shield, ChevronRight, Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -17,15 +17,16 @@ const LandingPage = () => {
             <div className="h-10 w-10 rounded-full bg-company-accent flex items-center justify-center">
               <Clock className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-white">24/7 Company</span>
+            <span className="text-xl font-bold">24/7 Company</span>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-white hover:text-company-accent link-hover transition-colors">Home</Link>
-            <Link to="/" className="text-white hover:text-company-accent link-hover transition-colors">Features</Link>
-            <Link to="/" className="text-white hover:text-company-accent link-hover transition-colors">Pricing</Link>
-            <Link to="/" className="text-white hover:text-company-accent link-hover transition-colors">Contact</Link>
+            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Home</Link>
+            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Features</Link>
+            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Pricing</Link>
+            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Contact</Link>
+            <ThemeToggle />
             <Link to="/login">
               <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-6">
                 Login
@@ -34,12 +35,15 @@ const LandingPage = () => {
           </nav>
           
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button 
+              className="text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
         
         {/* Mobile Navigation */}
@@ -48,13 +52,13 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-16 left-0 right-0 bg-company-blue-dark shadow-lg border-t border-company-blue py-4 z-50"
+            className="md:hidden absolute top-16 left-0 right-0 bg-background shadow-lg border-t border-border py-4 z-50"
           >
             <div className="container mx-auto flex flex-col space-y-4 px-6">
-              <Link to="/" className="text-white hover:text-company-accent transition-colors py-2">Home</Link>
-              <Link to="/" className="text-white hover:text-company-accent transition-colors py-2">Features</Link>
-              <Link to="/" className="text-white hover:text-company-accent transition-colors py-2">Pricing</Link>
-              <Link to="/" className="text-white hover:text-company-accent transition-colors py-2">Contact</Link>
+              <Link to="/" className="hover:text-company-accent transition-colors py-2">Home</Link>
+              <Link to="/" className="hover:text-company-accent transition-colors py-2">Features</Link>
+              <Link to="/" className="hover:text-company-accent transition-colors py-2">Pricing</Link>
+              <Link to="/" className="hover:text-company-accent transition-colors py-2">Contact</Link>
               <Link to="/login" className="py-2">
                 <Button className="bg-company-accent hover:bg-company-blue-light w-full text-white">
                   Login
@@ -73,10 +77,10 @@ const LandingPage = () => {
           transition={{ duration: 0.5 }}
           className="flex-1 flex flex-col justify-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
             Manage Your Workforce <span className="text-company-accent text-glow">Seamlessly</span>
           </h1>
-          <p className="text-lg text-gray-300 mb-8">
+          <p className="text-lg text-muted-foreground mb-8">
             Track attendance, manage payroll, and streamline your employee management with our powerful 24/7 platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -92,11 +96,11 @@ const LandingPage = () => {
           <div className="flex items-center mt-12 space-x-4">
             <div className="flex -space-x-4">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-10 w-10 rounded-full bg-gradient-to-r from-company-blue to-company-accent border-2 border-company-blue-dark"></div>
+                <div key={i} className="h-10 w-10 rounded-full bg-gradient-to-r from-company-blue to-company-accent border-2 border-background"></div>
               ))}
             </div>
-            <p className="text-gray-300">
-              <span className="text-white font-semibold">500+</span> companies trust us
+            <p className="text-muted-foreground">
+              <span className="font-semibold">500+</span> companies trust us
             </p>
           </div>
         </motion.div>
