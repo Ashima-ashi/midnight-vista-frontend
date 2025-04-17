@@ -121,7 +121,7 @@ const LandingPage = () => {
             duration: 4,
             ease: "easeInOut"
           }} className="glass-card relative z-10 rounded-xl blue-glow overflow-hidden">
-              <img alt="24/7 App" src="/lovable-uploads/7b5d8875-9a68-4c1a-bf34-c2750d70759c.jpg" className="w-full object-contain" />
+              <img alt="24/7 App" src="/images/7b5d8875-9a68-4c1a-bf34-c2750d70759c.jpg" className="w-full object-contain" />
             </motion.div>
           </div>
         </motion.div>
