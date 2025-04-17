@@ -4,12 +4,9 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, Users, BarChart3, Shield, ChevronRight, Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
-
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  return (
-    <div className="min-h-screen flex flex-col">
+  return <div className="min-h-screen flex flex-col">
       {/* Navigation */}
       <header className="w-full px-6 py-4">
         <div className="container mx-auto flex justify-between items-center">
@@ -22,10 +19,10 @@ const LandingPage = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Home</Link>
-            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Features</Link>
-            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Pricing</Link>
-            <Link to="/" className="hover:text-company-accent link-hover transition-colors">Contact</Link>
+            
+            
+            
+            
             <ThemeToggle />
             <Link to="/login">
               <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-6">
@@ -37,23 +34,23 @@ const LandingPage = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
-            <button 
-              className="text-foreground"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <button className="text-foreground" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
         
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-16 left-0 right-0 bg-background shadow-lg border-t border-border py-4 z-50"
-          >
+        {isMenuOpen && <motion.div initial={{
+        opacity: 0,
+        y: -20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} exit={{
+        opacity: 0,
+        y: -20
+      }} className="md:hidden absolute top-16 left-0 right-0 bg-background shadow-lg border-t border-border py-4 z-50">
             <div className="container mx-auto flex flex-col space-y-4 px-6">
               <Link to="/" className="hover:text-company-accent transition-colors py-2">Home</Link>
               <Link to="/" className="hover:text-company-accent transition-colors py-2">Features</Link>
@@ -65,18 +62,20 @@ const LandingPage = () => {
                 </Button>
               </Link>
             </div>
-          </motion.div>
-        )}
+          </motion.div>}
       </header>
 
       {/* Hero Section */}
       <section className="flex-1 flex flex-col-reverse md:flex-row container mx-auto px-6 py-12 md:py-24">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex-1 flex flex-col justify-center"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        x: -20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} transition={{
+        duration: 0.5
+      }} className="flex-1 flex flex-col justify-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
             Manage Your Workforce <span className="text-company-accent text-glow">Seamlessly</span>
           </h1>
@@ -95,33 +94,35 @@ const LandingPage = () => {
           
           <div className="flex items-center mt-12 space-x-4">
             <div className="flex -space-x-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-10 w-10 rounded-full bg-gradient-to-r from-company-blue to-company-accent border-2 border-background"></div>
-              ))}
+              {[1, 2, 3, 4].map(i => {})}
             </div>
-            <p className="text-muted-foreground">
-              <span className="font-semibold">500+</span> companies trust us
-            </p>
+            
           </div>
         </motion.div>
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex-1 flex justify-center items-center mb-12 md:mb-0"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.5,
+        delay: 0.2
+      }} className="flex-1 flex justify-center items-center mb-12 md:mb-0">
           <div className="relative max-w-lg">
             {/* Background decoration */}
             <div className="absolute -top-10 -right-10 h-64 w-64 bg-company-accent/10 rounded-full blur-3xl animate-pulse-light"></div>
             <div className="absolute -bottom-10 -left-10 h-64 w-64 bg-company-blue/20 rounded-full blur-3xl animate-pulse-light"></div>
             
             {/* App screenshot */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="glass-card relative z-10 rounded-xl blue-glow overflow-hidden"
-            >
+            <motion.div animate={{
+            y: [0, -10, 0]
+          }} transition={{
+            repeat: Infinity,
+            duration: 4,
+            ease: "easeInOut"
+          }} className="glass-card relative z-10 rounded-xl blue-glow overflow-hidden">
               <img src="/lovable-uploads/f0ff5265-f733-4b04-9291-482ab9d2c15a.png" alt="24/7 App" className="w-full" />
             </motion.div>
           </div>
@@ -132,56 +133,71 @@ const LandingPage = () => {
       <section className="bg-gradient-to-b from-company-blue-dark to-[#071428] py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
-            >
+            <motion.h2 initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5
+          }} className="text-3xl md:text-4xl font-bold text-white mb-4">
               Powerful Features for Your Business
             </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-gray-300 max-w-2xl mx-auto"
-            >
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5,
+            delay: 0.1
+          }} className="text-gray-300 max-w-2xl mx-auto">
               Everything you need to manage your workforce efficiently, all in one place.
             </motion.p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                className="glass-card p-6 rounded-xl hover:bg-white/10 transition-all duration-300"
-              >
+            {features.map((feature, index) => <motion.div key={feature.title} initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5,
+            delay: index * 0.1 + 0.2
+          }} className="glass-card p-6 rounded-xl hover:bg-white/10 transition-all duration-300">
                 <div className="h-12 w-12 rounded-lg bg-company-accent/20 flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto glass-card rounded-2xl p-8 md:p-12 blue-glow"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.5
+      }} className="container mx-auto glass-card rounded-2xl p-8 md:p-12 blue-glow">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
@@ -264,31 +280,23 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
-const features = [
-  {
-    title: "Attendance Management",
-    description: "Track employee attendance with ease, manage time-offs, and generate reports.",
-    icon: <Calendar className="h-6 w-6 text-company-accent" />,
-  },
-  {
-    title: "Payroll Processing",
-    description: "Automate salary calculations, manage payslips, and ensure timely payments.",
-    icon: <BarChart3 className="h-6 w-6 text-company-accent" />,
-  },
-  {
-    title: "Employee Management",
-    description: "Maintain employee records, track performance, and streamline onboarding.",
-    icon: <Users className="h-6 w-6 text-company-accent" />,
-  },
-  {
-    title: "Secure Access",
-    description: "Role-based access control and advanced security to protect your data.",
-    icon: <Shield className="h-6 w-6 text-company-accent" />,
-  },
-];
-
+const features = [{
+  title: "Attendance Management",
+  description: "Track employee attendance with ease, manage time-offs, and generate reports.",
+  icon: <Calendar className="h-6 w-6 text-company-accent" />
+}, {
+  title: "Payroll Processing",
+  description: "Automate salary calculations, manage payslips, and ensure timely payments.",
+  icon: <BarChart3 className="h-6 w-6 text-company-accent" />
+}, {
+  title: "Employee Management",
+  description: "Maintain employee records, track performance, and streamline onboarding.",
+  icon: <Users className="h-6 w-6 text-company-accent" />
+}, {
+  title: "Secure Access",
+  description: "Role-based access control and advanced security to protect your data.",
+  icon: <Shield className="h-6 w-6 text-company-accent" />
+}];
 export default LandingPage;
