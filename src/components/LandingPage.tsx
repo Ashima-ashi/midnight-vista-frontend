@@ -198,7 +198,7 @@ const LandingPage = () => {
       }} className="container mx-auto glass-card rounded-2xl p-8 md:p-12 blue-glow">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+              <h2 className="text-3xl font-bold mb-4 text-sky-400">Ready to Get Started?</h2>
               <p className="max-w-xl text-yellow-400">Join thousands of companies that use our platform to manage their workforce efficiently.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
