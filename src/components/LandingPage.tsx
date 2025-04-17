@@ -221,9 +221,7 @@ const LandingPage = () => {
           <div className="flex flex-col md:flex-row justify-between mb-8 gap-8">
             <div className="md:w-1/3">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="h-10 w-10 rounded-full bg-company-accent flex items-center justify-center">
-                  <Clock className="h-6 w-6 text-white" />
-                </div>
+                
                 <span className="text-xl font-bold text-white">24/7 Company</span>
               </div>
               <p className="text-gray-400 mb-4">
