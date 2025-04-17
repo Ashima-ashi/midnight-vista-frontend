@@ -199,7 +199,7 @@ const LandingPage = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-              <p className="max-w-xl text-slate-950">Join thousands of companies that use our platform to manage their workforce efficiently.</p>
+              <p className="max-w-xl text-yellow-400">Join thousands of companies that use our platform to manage their workforce efficiently.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-8 py-6">
