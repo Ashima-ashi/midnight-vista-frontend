@@ -184,36 +184,7 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6">
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} transition={{
-        duration: 0.5
-      }} className="container mx-auto glass-card rounded-2xl p-8 md:p-12 blue-glow">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h2 className="text-3xl font-bold mb-4 text-sky-400">Ready to Get Started?</h2>
-              <p className="max-w-xl text-yellow-400">Join thousands of companies that use our platform to manage their workforce efficiently.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-8 py-6">
-                Sign Up Now
-              </Button>
-              <Link to="/login">
-                <Button variant="outline" className="border-company-blue-light text-company-blue-light hover:bg-company-blue-light/10 button-hover px-8 py-6">
-                  Login
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      </section>
+      
 
       {/* Footer */}
       <footer className="bg-[#071428] py-12 px-6">
@@ -222,7 +193,7 @@ const LandingPage = () => {
             <div className="md:w-1/3">
               <div className="flex items-center space-x-2 mb-4">
                 
-                <span className="text-xl font-bold text-white">24/7 Company</span>
+                <span className="text-xl font-bold text-white">24/7 Software</span>
               </div>
               <p className="text-gray-400 mb-4">
                 Empowering businesses to manage their workforce efficiently and effectively.
