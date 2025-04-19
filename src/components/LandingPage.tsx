@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, Users, BarChart3, Shield, ChevronRight, Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  
   return <div className="min-h-screen flex flex-col">
       {/* Navigation */}
       <header className="w-full px-6 py-4">
@@ -88,8 +90,11 @@ const LandingPage = () => {
           
           <div className="flex items-center mt-12 space-x-4">
             <div className="flex -space-x-4">
-              {/* The error was here - this map function was returning void[] */}
-              {[1, 2, 3, 4].map(i => {})}
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="h-10 w-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center">
+                  <span className="text-xs font-semibold">{i}</span>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -105,11 +110,9 @@ const LandingPage = () => {
         delay: 0.2
       }} className="flex-1 flex justify-center items-center mb-12 md:mb-0">
           <div className="relative max-w-lg">
-            {/* Background decoration */}
             <div className="absolute -top-10 -right-10 h-64 w-64 bg-company-accent/10 rounded-full blur-3xl animate-pulse-light"></div>
             <div className="absolute -bottom-10 -left-10 h-64 w-64 bg-company-blue/20 rounded-full blur-3xl animate-pulse-light"></div>
             
-            {/* App screenshot */}
             <motion.div animate={{
             y: [0, -10, 0]
           }} transition={{
@@ -245,6 +248,7 @@ const LandingPage = () => {
       </footer>
     </div>;
 };
+
 const features = [{
   title: "Attendance Management",
   description: "Track employee attendance with ease, manage time-offs, and generate reports.",
@@ -262,4 +266,5 @@ const features = [{
   description: "Role-based access control and advanced security to protect your data.",
   icon: <Shield className="h-6 w-6 text-company-accent" />
 }];
+
 export default LandingPage;
