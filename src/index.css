@@ -42,8 +42,9 @@
 }
 
 @layer utilities {
-  /* Remove glass effect utilities */
+  /* Removed glass effect utilities */
   .glass-card {
     @apply bg-white border border-gray-200 shadow-md;
   }
 }
+
