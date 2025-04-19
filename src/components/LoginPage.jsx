@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from './ThemeToggle';
+
 const LoginPage = () => {
   const [employeeId, setEmployeeId] = useState('');
   const [password, setPassword] = useState('');
@@ -15,6 +16,7 @@ const LoginPage = () => {
   const {
     toast
   } = useToast();
+
   const handleLogin = e => {
     e.preventDefault();
     if (!employeeId || !password) {
@@ -30,14 +32,11 @@ const LoginPage = () => {
     // Simulate API request
     setTimeout(() => {
       setIsLoading(false);
-      toast({
-        title: "Success",
-        description: "You have successfully logged in"
-      });
-
-      // In a real app, you would navigate to the dashboard or handle auth context here
+      // Navigate to dashboard after successful login
+      window.location.href = '/dashboard';
     }, 1500);
   };
+
   return <div className="min-h-screen flex flex-col">
       <div className="container mx-auto px-6 py-8 flex justify-between items-center">
         <div className="flex items-center space-x-2">
@@ -133,4 +132,5 @@ const LoginPage = () => {
       </div>
     </div>;
 };
+
 export default LoginPage;
