@@ -9,7 +9,30 @@ const LandingPage = () => {
   return <div className="min-h-screen flex flex-col">
       {/* Navigation */}
       <header className="w-full px-6 py-4">
-        
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <img src="/lovable-uploads/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" alt="24/7 Software Logo" className="h-12 w-auto" />
+            <span className="text-xl font-bold">24/7 Company</span>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <ThemeToggle />
+            <Link to="/login">
+              <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-6">
+                Login
+              </Button>
+            </Link>
+          </nav>
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button className="text-foreground" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
         
         {/* Mobile Navigation */}
         {isMenuOpen && <motion.div initial={{
