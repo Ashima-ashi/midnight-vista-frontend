@@ -1,26 +1,29 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Users, BarChart3, Shield, ChevronRight, Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  
   return <div className="min-h-screen flex flex-col">
       {/* Navigation */}
       <header className="w-full px-6 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            
+            <img 
+              src="/lovable-uploads/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" 
+              alt="24/7 Software Logo" 
+              className="h-12 w-auto" 
+            />
             <span className="text-xl font-bold">24/7 Company</span>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            
-            
-            
-            
             <ThemeToggle />
             <Link to="/login">
               <Button className="bg-company-accent hover:bg-company-blue-light button-hover text-white px-6">
@@ -92,9 +95,13 @@ const LandingPage = () => {
           
           <div className="flex items-center mt-12 space-x-4">
             <div className="flex -space-x-4">
-              {[1, 2, 3, 4].map(i => {})}
+              {/* The error was here - this map function was returning void[] */}
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className={`h-10 w-10 rounded-full bg-company-blue-${i * 100} flex items-center justify-center ring-2 ring-background`}>
+                  <span className="text-xs text-white font-medium">U{i}</span>
+                </div>
+              ))}
             </div>
-            
           </div>
         </motion.div>
         
@@ -249,6 +256,7 @@ const LandingPage = () => {
       </footer>
     </div>;
 };
+
 const features = [{
   title: "Attendance Management",
   description: "Track employee attendance with ease, manage time-offs, and generate reports.",
@@ -266,4 +274,5 @@ const features = [{
   description: "Role-based access control and advanced security to protect your data.",
   icon: <Shield className="h-6 w-6 text-company-accent" />
 }];
+
 export default LandingPage;
