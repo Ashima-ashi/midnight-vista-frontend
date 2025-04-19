@@ -98,9 +98,7 @@ const LoginPage = () => {
                     <KeyRound className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input id="password" type={showPassword ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} className="pl-10 bg-background/50 border-input focus:border-company-accent placeholder:text-muted-foreground" placeholder="Enter your password" />
-                  <button type="button" className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground hover:text-foreground" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                  </button>
+                  
                 </div>
               </div>
               
