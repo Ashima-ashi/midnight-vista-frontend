@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -44,11 +45,20 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="container mx-auto px-6 py-8 flex justify-between items-center">
-        <Link to="/" className="inline-flex items-center text-company-accent hover:text-company-blue-light transition-colors">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Home
-        </Link>
-        <ThemeToggle />
+        <div className="flex items-center space-x-2">
+          <img 
+            src="/lovable-uploads/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" 
+            alt="24/7 Software Logo" 
+            className="h-12 w-auto" 
+          />
+        </div>
+        <div className="flex items-center space-x-4">
+          <Link to="/" className="inline-flex items-center text-company-accent hover:text-company-blue-light transition-colors">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+          <ThemeToggle />
+        </div>
       </div>
       
       <div className="flex-1 flex items-center justify-center px-6 py-12">
