@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -6,7 +5,6 @@ import { Eye, EyeOff, LogIn, ArrowLeft, User, KeyRound } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from './ThemeToggle';
 
 const LoginPage = () => {
@@ -14,42 +12,39 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!employeeId || !password) {
-      toast({
-        title: "Error",
-        description: "Please fill in all fields",
-        variant: "destructive"
-      });
+      setErrorMessage("*Please fill in all fields");
       return;
     }
     
     setIsLoading(true);
+    setErrorMessage('');
     
     // Simulate API request
     setTimeout(() => {
       setIsLoading(false);
-      toast({
-        title: "Success",
-        description: "You have successfully logged in",
-      });
-      
-      // In a real app, you would navigate to the dashboard or handle auth context here
+      // Success case handling would go here
     }, 1500);
   };
 
   return (
     <div className="min-h-screen flex flex-col">
       <div className="container mx-auto px-6 py-8 flex justify-between items-center">
-        <Link to="/" className="inline-flex items-center text-company-accent hover:text-company-blue-light transition-colors">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Home
-        </Link>
-        <ThemeToggle />
+        <div className="flex items-center space-x-2">
+          <img src="/lovable-uploads/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" alt="24/7 Software Logo" className="h-12 w-auto" />
+        </div>
+        <div className="flex items-center space-x-4">
+          <Link to="/" className="inline-flex items-center text-company-accent hover:text-company-blue-light transition-colors">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+          <ThemeToggle />
+        </div>
       </div>
       
       <div className="flex-1 flex items-center justify-center px-6 py-12">
@@ -137,6 +132,12 @@ const LoginPage = () => {
                   </>
                 )}
               </Button>
+              
+              {errorMessage && (
+                <p className="text-[#ea384c] text-sm mt-2">
+                  {errorMessage}
+                </p>
+              )}
               
               <div className="text-center mt-6">
                 <p className="text-muted-foreground">
