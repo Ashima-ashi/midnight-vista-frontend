@@ -5,24 +5,68 @@
 
 @layer base {
   :root {
-    /* Light theme variables */
-    --background: 0 0% 100%; /* Pure white background */
-    --foreground: 240 10% 3.9%; /* Dark text */
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --primary: 211 100% 50%; /* Bright blue for buttons */
-    --primary-foreground: 0 0% 100%; /* White text on blue buttons */
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    /* Default light theme variables */
+    --background: 218 49% 98%; /* light blue-gray */
+    --foreground: 216 50% 15%; /* dark blue */
+
+    --card: 220 30% 96%;
+    --card-foreground: 216 50% 15%;
+
+    --popover: 220 30% 96%;
+    --popover-foreground: 216 50% 15%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 25% 80%;
+    --secondary-foreground: 216 50% 15%;
+
+    --muted: 223 47% 94%;
+    --muted-foreground: 215 25% 35%;
+
+    --accent: 194 96% 42%;
+    --accent-foreground: 216 50% 15%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 34% 83%;
+    --input: 216 34% 83%;
+    --ring: 224 76% 52%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme variables */
+    --background: 216 50% 5%;
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 25% 26%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 194 96% 42%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 224 76% 48%;
+
     --radius: 0.75rem;
   }
 }
@@ -34,17 +78,48 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
   html {
     @apply scroll-smooth;
   }
-}
-
-@layer utilities {
-  /* Removed glass effect utilities */
-  .glass-card {
-    @apply bg-white border border-gray-200 shadow-md;
+  
+  .dark body {
+    @apply bg-company-blue-dark;
+  }
+  
+  .light body {
+    @apply bg-gray-50;
   }
 }
 
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 15px rgba(51, 161, 253, 0.5), 0 0 25px rgba(51, 161, 253, 0.3);
+  }
+  
+  .blue-glow {
+    box-shadow: 0 0 15px rgba(51, 161, 253, 0.3), 0 0 25px rgba(51, 161, 253, 0.2);
+  }
+  
+  .button-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md border shadow-lg;
+  }
+  
+  .dark .glass-card {
+    @apply bg-white/5 border-white/10;
+  }
+  
+  .light .glass-card {
+    @apply bg-white/80 border-gray-200;
+  }
+  
+  .link-hover {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-company-accent after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
