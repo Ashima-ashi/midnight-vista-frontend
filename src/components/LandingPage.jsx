@@ -12,7 +12,7 @@ const LandingPage = () => {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" 
+              src="/images1/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" 
               alt="24/7 Software Logo" 
               className="h-12 w-auto" 
             />
@@ -125,7 +125,7 @@ const LandingPage = () => {
             duration: 4,
             ease: "easeInOut"
           }} className="glass-card relative z-10 rounded-xl blue-glow overflow-hidden">
-              <img alt="24/7 App" className="w-full object-contain" src="/lovable-uploads/1798df10-dd86-4ccc-af54-21d262e8f7c1.png" />
+              <img alt="24/7 App" className="w-full object-contain" src="/images1/1798df10-dd86-4ccc-af54-21d262e8f7c1.png" />
             </motion.div>
           </div>
         </motion.div>
