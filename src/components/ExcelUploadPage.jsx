@@ -51,7 +51,7 @@ const ExcelUploadPage = () => {
               </Button>
             </Link>
             <img 
-              src="/lovable-uploads/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" 
+              src="/images1/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" 
               alt="24/7 Software Logo" 
               className="h-12 w-auto" 
             />

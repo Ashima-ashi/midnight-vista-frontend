@@ -125,7 +125,7 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'hero-pattern': 'url("/public/lovable-uploads/f0ff5265-f733-4b04-9291-482ab9d2c15a.png")'
+				'hero-pattern': 'url("/public/images1/f0ff5265-f733-4b04-9291-482ab9d2c15a.png")'
 			}
 		}
 	},
