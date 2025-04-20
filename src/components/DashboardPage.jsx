@@ -7,7 +7,7 @@ import { ThemeToggle } from './ThemeToggle';
 
 const DashboardPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-company-blue-dark to-company-blue">
+    <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-company-blue-dark dark:to-company-blue">
       <div className="container mx-auto px-6 py-8">
         <div className="flex justify-between items-center mb-12">
           <img 
@@ -17,16 +17,16 @@ const DashboardPage = () => {
           />
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Button variant="outline" className="text-blue border-white hover:bg-white/10">
+            <Button variant="outline" className="text-blue border-blue hover:bg-blue/10">
               Logout
             </Button>
           </div>
         </div>
 
         <div className="flex items-center justify-center h-[70vh]">
-          <div className="glass-card p-8 rounded-2xl text-center max-w-md w-full">
+          <div className="bg-white dark:bg-white/5 p-8 rounded-2xl text-center max-w-md w-full shadow-lg">
             <h1 className="text-3xl font-bold text-blue mb-6">Welcome to Dashboard</h1>
-            <p className="text-gray-200 mb-8">Upload and manage your Excel files here</p>
+            <p className="text-gray-600 dark:text-gray-200 mb-8">Upload and manage your Excel files here</p>
             
             <Link to="/upload-excel">
               <Button 
@@ -44,3 +44,4 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+

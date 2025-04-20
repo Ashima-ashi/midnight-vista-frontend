@@ -40,12 +40,12 @@ const ExcelUploadPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-company-blue-dark to-company-blue">
+    <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-company-blue-dark dark:to-company-blue">
       <div className="container mx-auto px-6 py-8">
         <div className="flex justify-between items-center mb-12">
           <div className="flex items-center gap-4">
             <Link to="/dashboard">
-              <Button variant="ghost" className="text-white hover:bg-white/10">
+              <Button variant="ghost" className="text-blue hover:bg-blue/10">
                 <ArrowLeft className="h-5 w-5 mr-2" />
                 Back to Dashboard
               </Button>
@@ -60,21 +60,21 @@ const ExcelUploadPage = () => {
         </div>
 
         <div className="flex items-center justify-center h-[70vh]">
-          <div className="glass-card p-8 rounded-2xl text-center max-w-md w-full">
-            <h1 className="text-3xl font-bold text-white mb-6">Upload Excel File</h1>
+          <div className="bg-white dark:bg-white/5 p-8 rounded-2xl text-center max-w-md w-full shadow-lg">
+            <h1 className="text-3xl font-bold text-blue mb-6">Upload Excel File</h1>
             
             <div
               className={`border-2 border-dashed rounded-lg p-8 mb-6 transition-colors ${
                 isDragging 
-                  ? 'border-company-accent bg-white/10' 
-                  : 'border-gray-400 hover:border-company-accent'
+                  ? 'border-company-accent bg-blue/10' 
+                  : 'border-gray-300 hover:border-company-accent'
               }`}
               onDrop={handleDrop}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
             >
-              <Upload className="h-12 w-12 mx-auto mb-4 text-white" />
-              <p className="text-gray-200 mb-4">
+              <Upload className="h-12 w-12 mx-auto mb-4 text-blue" />
+              <p className="text-gray-600 dark:text-gray-200 mb-4">
                 Drag & drop your Excel file here or click to browse
               </p>
               <input
@@ -92,9 +92,9 @@ const ExcelUploadPage = () => {
             </div>
 
             {selectedFile && (
-              <div className="text-left p-4 bg-white/10 rounded-lg">
-                <p className="text-white">Selected file:</p>
-                <p className="text-gray-200 truncate">{selectedFile.name}</p>
+              <div className="text-left p-4 bg-blue/10 rounded-lg">
+                <p className="text-blue">Selected file:</p>
+                <p className="text-gray-600 dark:text-gray-200 truncate">{selectedFile.name}</p>
               </div>
             )}
           </div>
