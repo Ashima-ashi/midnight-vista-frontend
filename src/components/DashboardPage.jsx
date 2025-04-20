@@ -19,7 +19,7 @@ const DashboardPage = () => {
         <div className="flex items-center justify-center h-[70vh]">
           <div className="bg-white dark:bg-white/5 p-8 rounded-2xl text-center max-w-md w-full shadow-lg">
             <h1 className="text-3xl font-bold text-blue mb-6">Welcome to Dashboard</h1>
-            <p className="mb-8 text-red-600 font-medium">Upload and manage your Excel files here</p>
+            <p className="mb-8 text-red-600 font-medium">* Upload and manage your Excel files here</p>
             
             <Link to="/upload-excel">
               <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
