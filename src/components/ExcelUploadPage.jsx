@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Upload, ArrowLeft } from 'lucide-react';
@@ -10,19 +10,28 @@ import * as XLSX from 'xlsx';
 const ExcelUploadPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef(null);
   const navigate = useNavigate();
 
   const handleFileChange = event => {
     const file = event.target.files[0];
-    if (file && (file.type.includes('spreadsheet') || file.type.includes('csv') || file.name.endsWith('.xlsx') || file.name.endsWith('.xls') || file.name.endsWith('.csv'))) {
-      setSelectedFile(file);
-      handleFileUpload(file);
-    } else {
-      toast.error('Please upload a valid Excel or CSV file');
+    if (file) {
+      processFile(file);
     }
   };
 
-  const handleFileUpload = (file) => {
+  const processFile = (file) => {
+    // Check if file is Excel or CSV by extension
+    const validExtensions = ['.xlsx', '.xls', '.csv'];
+    const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+    
+    if (!validExtensions.includes(fileExtension)) {
+      toast.error('Please upload a valid Excel or CSV file');
+      return;
+    }
+    
+    setSelectedFile(file);
+    
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
@@ -31,6 +40,11 @@ const ExcelUploadPage = () => {
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        
+        if (jsonData.length === 0) {
+          toast.error('The file contains no data');
+          return;
+        }
         
         // Store the data in sessionStorage for the table page
         sessionStorage.setItem('employeeData', JSON.stringify(jsonData));
@@ -44,18 +58,21 @@ const ExcelUploadPage = () => {
         toast.error('Error processing file. Please try again with a valid Excel or CSV file.');
       }
     };
+    
+    reader.onerror = () => {
+      toast.error('Error reading file');
+    };
+    
     reader.readAsArrayBuffer(file);
   };
 
   const handleDrop = event => {
     event.preventDefault();
     setIsDragging(false);
+    
     const file = event.dataTransfer.files[0];
-    if (file && (file.type.includes('spreadsheet') || file.type.includes('csv') || file.name.endsWith('.xlsx') || file.name.endsWith('.xls') || file.name.endsWith('.csv'))) {
-      setSelectedFile(file);
-      handleFileUpload(file);
-    } else {
-      toast.error('Please upload a valid Excel or CSV file');
+    if (file) {
+      processFile(file);
     }
   };
 
@@ -66,6 +83,11 @@ const ExcelUploadPage = () => {
 
   const handleDragLeave = () => {
     setIsDragging(false);
+  };
+  
+  const handleButtonClick = () => {
+    // Programmatically click the hidden file input
+    fileInputRef.current.click();
   };
 
   return (
@@ -99,17 +121,19 @@ const ExcelUploadPage = () => {
                 Drag & drop your Excel or CSV file here or click to browse
               </p>
               <input 
+                ref={fileInputRef}
                 type="file" 
                 accept=".xlsx,.xls,.csv" 
                 onChange={handleFileChange} 
                 className="hidden" 
                 id="file-upload" 
               />
-              <label htmlFor="file-upload">
-                <Button className="bg-company-accent hover:bg-company-blue-light text-white cursor-pointer">
-                  Choose File
-                </Button>
-              </label>
+              <Button 
+                onClick={handleButtonClick}
+                className="bg-company-accent hover:bg-company-blue-light text-white cursor-pointer"
+              >
+                Choose File
+              </Button>
             </div>
 
             {selectedFile && (
