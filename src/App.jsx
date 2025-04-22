@@ -8,6 +8,7 @@ import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import DashboardPage from "./components/DashboardPage";
 import ExcelUploadPage from "./components/ExcelUploadPage";
+import EmployeeTable from "./components/EmployeeTable";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/ThemeProvider";
 
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/upload-excel" element={<ExcelUploadPage />} />
+            <Route path="/employee-table" element={<EmployeeTable />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
