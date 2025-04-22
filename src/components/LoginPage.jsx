@@ -116,7 +116,7 @@ const LoginPage = () => {
               
               <div className="text-center mt-6">
                 <p className="text-muted-foreground">
-                  New Employee?{" "}
+                  {" "}
                   
                 </p>
               </div>
