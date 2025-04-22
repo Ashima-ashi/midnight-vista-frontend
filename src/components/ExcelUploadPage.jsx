@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,7 @@ const ExcelUploadPage = () => {
 
   const handleFileChange = event => {
     const file = event.target.files[0];
-    if (file && (file.type.includes('spreadsheet') || file.type.includes('csv'))) {
+    if (file && (file.type.includes('spreadsheet') || file.type.includes('csv') || file.name.endsWith('.xlsx') || file.name.endsWith('.xls') || file.name.endsWith('.csv'))) {
       setSelectedFile(file);
       handleFileUpload(file);
     } else {
@@ -24,19 +25,24 @@ const ExcelUploadPage = () => {
   const handleFileUpload = (file) => {
     const reader = new FileReader();
     reader.onload = (e) => {
-      const data = e.target.result;
-      const workbook = XLSX.read(data, { type: 'array' });
-      const sheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[sheetName];
-      const jsonData = XLSX.utils.sheet_to_json(worksheet);
-      
-      // Store the data in sessionStorage for the table page
-      sessionStorage.setItem('employeeData', JSON.stringify(jsonData));
-      
-      toast.success('File uploaded successfully!');
-      setTimeout(() => {
-        navigate('/employee-table');
-      }, 1500);
+      try {
+        const data = e.target.result;
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        
+        // Store the data in sessionStorage for the table page
+        sessionStorage.setItem('employeeData', JSON.stringify(jsonData));
+        
+        toast.success('File uploaded successfully!');
+        setTimeout(() => {
+          navigate('/employee-table');
+        }, 1500);
+      } catch (error) {
+        console.error('Error processing file:', error);
+        toast.error('Error processing file. Please try again with a valid Excel or CSV file.');
+      }
     };
     reader.readAsArrayBuffer(file);
   };
@@ -45,7 +51,7 @@ const ExcelUploadPage = () => {
     event.preventDefault();
     setIsDragging(false);
     const file = event.dataTransfer.files[0];
-    if (file && (file.type.includes('spreadsheet') || file.type.includes('csv'))) {
+    if (file && (file.type.includes('spreadsheet') || file.type.includes('csv') || file.name.endsWith('.xlsx') || file.name.endsWith('.xls') || file.name.endsWith('.csv'))) {
       setSelectedFile(file);
       handleFileUpload(file);
     } else {
@@ -62,7 +68,8 @@ const ExcelUploadPage = () => {
     setIsDragging(false);
   };
 
-  return <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-company-blue-dark dark:to-company-blue">
+  return (
+    <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-company-blue-dark dark:to-company-blue">
       <div className="container mx-auto px-6 py-8">
         <div className="flex justify-between items-center mb-12">
           <div className="flex items-center gap-4">
@@ -81,7 +88,8 @@ const ExcelUploadPage = () => {
           <div className="bg-white dark:bg-white/5 p-8 rounded-2xl text-center max-w-md w-full shadow-lg">
             <h1 className="font-bold mb-6 text-2xl text-red-600">Upload Excel or CSV File</h1>
             
-            <div className={`border-2 border-dashed rounded-lg p-8 mb-6 transition-colors ${isDragging ? 'border-company-accent bg-blue/10' : 'border-gray-300 hover:border-company-accent'}`} 
+            <div 
+              className={`border-2 border-dashed rounded-lg p-8 mb-6 transition-colors ${isDragging ? 'border-company-accent bg-blue/10' : 'border-gray-300 hover:border-company-accent'}`} 
               onDrop={handleDrop} 
               onDragOver={handleDragOver} 
               onDragLeave={handleDragLeave}
@@ -98,7 +106,7 @@ const ExcelUploadPage = () => {
                 id="file-upload" 
               />
               <label htmlFor="file-upload">
-                <Button className="bg-company-accent hover:bg-company-blue-light text-white">
+                <Button className="bg-company-accent hover:bg-company-blue-light text-white cursor-pointer">
                   Choose File
                 </Button>
               </label>
@@ -115,7 +123,8 @@ const ExcelUploadPage = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default ExcelUploadPage;
