@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -13,15 +12,7 @@ const ExcelUploadPage = () => {
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleFileChange = event => {
-    const file = event.target.files[0];
-    if (file) {
-      processFile(file);
-    }
-  };
-
   const processFile = (file) => {
-    // Check if file is Excel or CSV by extension
     const validExtensions = ['.xlsx', '.xls', '.csv'];
     const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
     
@@ -36,17 +27,38 @@ const ExcelUploadPage = () => {
     reader.onload = (e) => {
       try {
         const data = e.target.result;
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        let jsonData;
         
-        if (jsonData.length === 0) {
+        if (fileExtension === '.csv') {
+          // Handle CSV files
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheetName];
+          jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+          
+          // Convert array format to object format with proper headers
+          const headers = jsonData[0];
+          jsonData = jsonData.slice(1).map(row => {
+            const obj = {};
+            headers.forEach((header, index) => {
+              obj[header] = row[index];
+            });
+            return obj;
+          });
+        } else {
+          // Handle Excel files
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheetName];
+          jsonData = XLSX.utils.sheet_to_json(worksheet);
+        }
+        
+        if (!jsonData || jsonData.length === 0) {
           toast.error('The file contains no data');
           return;
         }
         
-        // Store the data in sessionStorage for the table page
+        // Store the data in sessionStorage
         sessionStorage.setItem('employeeData', JSON.stringify(jsonData));
         
         toast.success('File uploaded successfully!');
@@ -55,7 +67,7 @@ const ExcelUploadPage = () => {
         }, 1500);
       } catch (error) {
         console.error('Error processing file:', error);
-        toast.error('Error processing file. Please try again with a valid Excel or CSV file.');
+        toast.error('Error processing file. Please check the file format.');
       }
     };
     
@@ -64,6 +76,13 @@ const ExcelUploadPage = () => {
     };
     
     reader.readAsArrayBuffer(file);
+  };
+
+  const handleFileChange = event => {
+    const file = event.target.files[0];
+    if (file) {
+      processFile(file);
+    }
   };
 
   const handleDrop = event => {
