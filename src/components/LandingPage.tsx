@@ -14,7 +14,7 @@ const LandingPage = () => {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <img src="/images1/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" alt="24/7 Software Logo" className="h-12 w-auto" />
-            <span className="text-xl font-bold">24/7 Company</span>
+            
           </div>
           
           {/* Desktop Navigation */}
