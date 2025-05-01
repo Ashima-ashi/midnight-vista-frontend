@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { FileUp } from 'lucide-react';
+import { FileUp, FileSearch } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+
 const DashboardPage = () => {
   return <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-company-blue-dark dark:to-company-blue">
       <div className="container mx-auto px-6 py-8">
@@ -21,15 +23,25 @@ const DashboardPage = () => {
             <h1 className="text-3xl font-bold text-blue mb-6">Welcome to Dashboard</h1>
             <p className="mb-8 text-red-600 font-medium">* Upload and manage your Excel files here</p>
             
-            <Link to="/upload-excel">
-              <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
-                <FileUp className="h-5 w-5" />
-                Upload Excel File
-              </Button>
-            </Link>
+            <div className="space-y-4">
+              <Link to="/upload-excel">
+                <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
+                  <FileUp className="h-5 w-5" />
+                  Upload Excel File
+                </Button>
+              </Link>
+              
+              <Link to="/employee-table">
+                <Button variant="outline" className="w-full border-company-accent text-company-accent hover:bg-company-accent/10 py-6 flex items-center justify-center gap-2">
+                  <FileSearch className="h-5 w-5" />
+                  View Recent Files
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </div>;
 };
+
 export default DashboardPage;
