@@ -2,21 +2,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { FileUp, FileSearch } from 'lucide-react';
+import { FileUp, FileSearch, LogOut } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-company-blue-dark dark:to-company-blue flex items-center">
       <div className="container mx-auto px-6 py-8">
-        <div className="flex justify-between items-center mb-12">
-          <img src="/images1/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" alt="24/7 Software Logo" className="h-12 w-auto" />
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+          <div className="flex items-center gap-4 mb-4 md:mb-0">
+            <img src="/images1/1d18324c-aaea-4755-8d21-e294f33a4bcc.png" alt="24/7 Software Logo" className="h-12 w-auto" />
+            <h1 className="text-3xl font-bold text-company-blue hidden md:block">Excel File Management</h1>
+          </div>
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Button variant="outline" className="text-blue border-blue hover:bg-blue/10">
-              Logout
+              <LogOut className="h-4 w-4 mr-2" /> Logout
             </Button>
           </div>
+        </div>
+        
+        <div className="md:hidden text-center mb-8">
+          <h1 className="text-3xl font-bold text-company-blue">Excel File Management</h1>
         </div>
 
         <div className="max-w-4xl mx-auto flex items-center justify-center h-[70vh]">
