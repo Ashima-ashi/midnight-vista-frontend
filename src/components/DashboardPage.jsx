@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { FileUp, FileSearch } from 'lucide-react';
+import { FileUp, FileSearch, Calendar } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 const DashboardPage = () => {
@@ -36,6 +36,15 @@ const DashboardPage = () => {
                 <Button variant="outline" className="w-full border-company-accent text-company-accent hover:bg-company-accent/10 py-6 flex items-center justify-center gap-2">
                   <FileSearch className="h-5 w-5" />
                   View Recent Files
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="mt-8">
+              <Link to="/manual-marking" className="flex-1">
+                <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  Manual Day-wise Marking
                 </Button>
               </Link>
             </div>
