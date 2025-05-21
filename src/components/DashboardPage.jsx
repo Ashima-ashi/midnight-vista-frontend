@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { FileUp, FileSearch, Calendar } from 'lucide-react';
+import { FileUp, FileSearch, Calendar, FileSpreadsheet } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 const DashboardPage = () => {
@@ -40,11 +40,18 @@ const DashboardPage = () => {
               </Link>
             </div>
             
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col gap-4">
               <Link to="/manual-marking" className="flex-1">
                 <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
                   <Calendar className="h-5 w-5" />
                   Manual Day-wise Marking
+                </Button>
+              </Link>
+              
+              <Link to="/upload-holiday" className="flex-1">
+                <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
+                  <FileSpreadsheet className="h-5 w-5" />
+                  Upload Holiday Sheet
                 </Button>
               </Link>
             </div>
