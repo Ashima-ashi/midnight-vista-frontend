@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { FileUp, FileSearch, Calendar, FileSpreadsheet } from 'lucide-react';
+import { FileUp, FileSearch, Calendar, FileSpreadsheet, Eye } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 const DashboardPage = () => {
@@ -52,6 +52,13 @@ const DashboardPage = () => {
                 <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
                   <FileSpreadsheet className="h-5 w-5" />
                   Upload Holiday Sheet
+                </Button>
+              </Link>
+              
+              <Link to="/view-holiday" className="flex-1">
+                <Button className="w-full bg-company-accent hover:bg-company-blue-light text-white py-6 flex items-center justify-center gap-2">
+                  <Eye className="h-5 w-5" />
+                  View Holiday Sheet
                 </Button>
               </Link>
             </div>
